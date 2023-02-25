@@ -1,6 +1,5 @@
 import DataApi from "./components/DataApi";
 import { Layout } from "./components/Layout";
-import Modal from "./components/Modal";
 
 function App() {
   return (
