@@ -7,7 +7,7 @@ const Modal = ({ name, image, year, city, stadiumName, stadiumImage, capacity, o
         <div className='border-b-2 border-sky-600 p-3 relative'>
           <h1 className='text-4xl font-bold'>{name}</h1>
           <div className='absolute top-0 bottom-0 right-3 flex items-center'>
-            <button className='' onClick={onClick}>
+            <button onClick={onClick}>
               <span className="material-symbols-outlined text-4xl">
                 close
               </span>
@@ -15,12 +15,11 @@ const Modal = ({ name, image, year, city, stadiumName, stadiumImage, capacity, o
           </div>
         </div>
         <div className='flex flex-col justify-center items-center'>
-          <img src={image} alt='club' />
-          <p>Founded in {year}</p>
-          <p>{city}, UK</p>
+          <img className='p-3' src={image} alt='club' />
+          <p>Founded in {year}, {city} (UK)</p>
           <h1>{stadiumName.includes('Stadium') ? stadiumName : stadiumName + " Stadium"}</h1>
-          <img src={stadiumImage} alt='stadium' />
-          <p>Capacity for {capacity} people</p>
+          <img className='border w-96' src={stadiumImage} alt='stadium' />
+          <p>Capacity for <span className='font-bold'>{capacity}</span> people</p>
         </div>
       </div>
     </div>
