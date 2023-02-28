@@ -15,8 +15,8 @@ const DataApi = () => {
   const options = {
     method: 'GET',
     headers: {
-      'X-RapidAPI-Key': 'f308261da5mshe860c0b7098ca65p138e92jsnb5c3ada18ea0',
-      'X-RapidAPI-Host': 'api-football-beta.p.rapidapi.com'
+      'X-RapidAPI-Key': process.env.REACT_APP_PREMIER_LEAGUE_API_KEY,
+      'X-RapidAPI-Host': process.env.REACT_APP_HOST_API_KEY
     }
   };
 
@@ -33,7 +33,7 @@ const DataApi = () => {
     <>
       {loading ?
         <div className='w-full flex flex-col justify-center items-center'>
-          <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+          <div className="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
           <h1 className='text-center'>Loading the teams</h1> 
         </div> :
         <div className='grid grid-cols-3 gap-10'>
