@@ -38,7 +38,7 @@ const DataApi = () => {
         </div> :
         <div className='grid grid-cols-3 gap-10'>
           {teams.map(group => (
-            <button onClick={() => {setShowModal(true); setModalData(group)}} className='border-2 border-stone-900 rounded-xl py-5 flex flex-col items-center justify-center' key={group.team.id}>
+            <button onClick={() => {setShowModal(true); setModalData(group)}} className='bg-gray-200 rounded-xl py-5 flex flex-col items-center justify-center ease-in duration-200 hover:-translate-y-3  hover:bg-gray-300' key={group.team.id}>
               <h1 className='text-3xl'>{group.team.name}</h1>
               <img src={group.team.logo} alt={group.team.name} />
             </button>
