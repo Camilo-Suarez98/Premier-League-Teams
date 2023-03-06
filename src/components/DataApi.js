@@ -1,36 +1,36 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import Modal from './Modal'
+import { Input } from './Input'
+import { useFetch } from '../hook/useFetch'
 
 const DataApi = () => {
-  const [ teams, setTeams ] = useState([])
+  const { teams, loading } = useFetch()
   const [ showModal, setShowModal ] = useState(false)
   const [ modalData, setModalData ] = useState()
-  const [ loading, setLoading ] = useState(true)
+  const [ searchTeam, setSearchTeam ] = useState('')
 
-  useEffect(() => {
-    getData()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
-  const options = {
-    method: 'GET',
-    headers: {
-      'X-RapidAPI-Key': process.env.REACT_APP_PREMIER_LEAGUE_API_KEY,
-      'X-RapidAPI-Host': process.env.REACT_APP_HOST_API_KEY
-    }
-  };
-
-  const getData = async () => {
-    setLoading(true)
-    const res = await fetch(`https://api-football-beta.p.rapidapi.com/teams?league=39&season=2022`, options)
-    const data = await res.json()
-    setTeams(data.response);
-    setLoading(false)
-    console.log(data.response);
+  const handleSearchTeam = (e) => {
+    setSearchTeam(e.target.value)
+    console.log(searchTeam);
   }
- 
+
+  const handleSumbit = (e) => {
+    e.preventDefault()
+    if (!searchTeam) {
+      return
+    }
+  }
+  
   return (
-    <>
+    <div>
+      <form onSubmit={handleSumbit}>
+        <Input
+          className="flex w-1/3 text-center m-auto outline-none border-2 border-gray-200 rounded-lg mb-5"
+          type='text'
+          placeholder='Search the team'
+          onChange={handleSearchTeam}
+        />
+      </form>
       {loading ?
         <div className='w-full flex flex-col justify-center items-center'>
           <div className="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
@@ -57,7 +57,7 @@ const DataApi = () => {
           }
         </div>
       }
-    </>
+    </div>
   )
 }
 
