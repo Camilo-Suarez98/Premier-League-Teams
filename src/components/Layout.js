@@ -1,14 +1,20 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { ThemeContext } from '../context/ThemeContext'
 
 export const Layout = ({ children }) => {
+  const { theme, toggleTheme } = useContext(ThemeContext)
   
   return (
-    <>
+    <div className='w-3/4 m-auto'>
+      <button onClick={toggleTheme}>
+        {theme === 'light' ? '🌝' : '🌚'}
+      </button>
       <header className='w-full h-48 flex flex-col justify-center items-center py-5'>
-        <img className='text-center w-60 h-32' src="../premier-league-logo.png" alt='premier logo' />
+        <img className={theme === 'light' ? 'hidden' : 'text-center w-60 h-32'} src="../premier-league-logo.png" alt='premier logo' />
+        <img className={theme === 'dark' ? 'hidden' : 'text-center w-60 h-32'} src="../logo-premier-blanco.png" alt='premier logo' />
         <h1 className='text-2xl pt-5'>Select a team</h1>
       </header>  
       {children}
-    </>
+    </div>
   )
 }
