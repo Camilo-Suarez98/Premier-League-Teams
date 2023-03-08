@@ -7,7 +7,7 @@ export const Layout = ({ children }) => {
   return (
     <div className='w-3/4 m-auto'>
       <header className='w-full h-48 relative flex flex-col justify-center items-center py-5'>
-        <button className='absolute right-5 text-2xl' onClick={toggleTheme}>
+        <button className='absolute right-5 text-2xl sm:static' onClick={toggleTheme}>
           {theme === 'light' ? '🌝' : '🌚'}
         </button>
         <img className={theme === 'light' ? 'hidden' : 'text-center w-60 h-32'} src="../premier-league-logo.png" alt='premier logo' />

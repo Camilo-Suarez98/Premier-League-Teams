@@ -7,7 +7,6 @@ const DataApi = () => {
   const { teams, loading } = useFetch()
   const [ showModal, setShowModal ] = useState(false)
   const [ modalData, setModalData ] = useState()
-  const [ searchTeam, setSearchTeam ] = useState('')
   const { theme } = useContext(ThemeContext)
   
   return (
@@ -17,15 +16,15 @@ const DataApi = () => {
           <div className="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
           <h1 className='text-center'>Loading the teams</h1> 
         </div> :
-        <div className='grid grid-cols-3 gap-10'>
+        <div className='grid grid-cols-3 gap-10 lg:grid-cols-2 ls:grid-cols-1'>
           {teams.map(group => (
             <button
               onClick={() => {setShowModal(true); setModalData(group)}}
               className={theme === 'dark' ?
-                'bg-gray-200 hover:bg-gray-300 rounded-xl py-5 flex flex-col items-center justify-center ease-in duration-200 hover:-translate-y-3' :
-                'bg-gray-800 hover:bg-gray-900 rounded-xl py-5 flex flex-col items-center justify-center ease-in duration-200 hover:-translate-y-3'} key={group.team.id}
+                'bg-gray-200 hover:bg-gray-300 rounded-xl px-3 py-5 flex flex-col items-center justify-center ease-in duration-200 hover:-translate-y-3' :
+                'bg-gray-800 hover:bg-gray-900 rounded-xl px-3 py-5 flex flex-col items-center justify-center ease-in duration-200 hover:-translate-y-3'} key={group.team.id}
             >
-              <h1 className='text-3xl'>{group.team.name}</h1>
+              <h1 className='text-3xl pb-3'>{group.team.name}</h1>
               <img src={group.team.logo} alt={group.team.name} />
             </button>
           ))}
