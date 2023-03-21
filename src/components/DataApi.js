@@ -3,7 +3,7 @@ import Modal from './Modal'
 import { useFetch } from '../hook/useFetch'
 import { ThemeContext } from '../context/ThemeContext'
 
-const DataApi = () => {
+export const DataApi = () => {
   const { teams, loading } = useFetch()
   const [ showModal, setShowModal ] = useState(false)
   const [ modalData, setModalData ] = useState()
@@ -45,5 +45,3 @@ const DataApi = () => {
     </div>
   )
 }
-
-export default DataApi;

@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import DataApi from "./components/DataApi";
+import { DataApi } from "./components/DataApi";
 import { Layout } from "./components/Layout";
 import { ThemeContext } from './context/ThemeContext'
 
